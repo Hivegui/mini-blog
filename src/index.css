@@ -101,6 +101,8 @@ textarea::placeholder {
 
 .btn.btn-conclude:hover {
   background-color: #008000;
+  text-align: center;
+  justify-content: center;
 }
 
 button[disabled] {
