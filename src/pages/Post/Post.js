@@ -1,3 +1,5 @@
+// Página de Post
+
 import styles from "./Post.module.css";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useParams } from "react-router-dom";
@@ -20,6 +22,7 @@ const Post = () => {
         <>
           <h1>{post.title}</h1>
           <img src={post.image} alt={post.title} />
+          <p>Cliente: <strong>{post.createdBy}</strong></p>
           <p>Funcionário: <strong>{post.selectedEmployee}</strong></p> {/* Certifique-se de que o campo está presente */}
           <p>Observação: <strong>{post.body}</strong></p>
           <p>Horário: {post.time}</p>

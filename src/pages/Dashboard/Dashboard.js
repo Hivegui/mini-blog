@@ -1,3 +1,5 @@
+// Dashboard do Usuário
+
 import styles from "./Dashboard.module.css";
 
 import { Link } from "react-router-dom";
@@ -20,7 +22,7 @@ const Dashboard = () => {
   return (
     <div className={styles.dashboard}>
       <h2>Dashboard</h2>
-      <p>Gerencar as Lavagens</p>
+      <p>Gerenciar as Lavagens</p>
       {posts && posts.length === 0 ? (
         <div className={styles.noposts}>
           <p>Não foram encontradas nenhuma lavagem.</p>
@@ -41,7 +43,7 @@ const Dashboard = () => {
             <p>{post.title}</p>
             <div className={styles.actions}>
               <Link to={`/posts/${post.id}`} className="btn btn-outline">
-                Ver
+                Visualizar
               </Link>
               <Link to={`/posts/edit/${post.id}`} className="btn btn-outline">
                 Editar

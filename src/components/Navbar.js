@@ -62,14 +62,6 @@ const Navbar = () => {
                 Dashboard
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/historico"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                Histórico
-              </NavLink>
-            </li>
           </>
         )}
         <li>
