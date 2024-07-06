@@ -1,3 +1,5 @@
+// Componente Footer
+
 import styles from "./Footer.module.css";
 
 const Footer = () => {

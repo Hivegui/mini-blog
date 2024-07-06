@@ -1,5 +1,3 @@
-// Página de Post
-
 import styles from "./Post.module.css";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useParams } from "react-router-dom";
@@ -23,10 +21,11 @@ const Post = () => {
           <h1>{post.title}</h1>
           <img src={post.image} alt={post.title} />
           <p>Cliente: <strong>{post.createdBy}</strong></p>
-          <p>Funcionário: <strong>{post.selectedEmployee}</strong></p> {/* Certifique-se de que o campo está presente */}
+          <p>Funcionário: <strong>{post.selectedEmployee}</strong></p>
           <p>Observação: <strong>{post.body}</strong></p>
           <p>Horário: {post.time}</p>
           <p>Data: {post.date}</p>
+          <p>Preço: <strong>{post.washPrice}</strong></p> {/* Corrigir o nome do campo */}
           <h3>Tags:</h3>
           <div className={styles.tags}>
             {post.tags.map((tag) => (

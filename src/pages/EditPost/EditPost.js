@@ -110,6 +110,13 @@ const EditPost = () => {
               </select>
             </label>
 
+            <p className={styles.preview_title}>Preview da imagem:</p>
+            <img
+              className={styles.image_preview}
+              src={washImages[title]}
+              alt={title}
+            />
+
             <label>
               <span>Selecione um Funcionário:</span>
               <select
@@ -131,24 +138,6 @@ const EditPost = () => {
                   </option>
                 ))}
               </select>
-            </label>
-
-            <p className={styles.preview_title}>Preview da imagem:</p>
-            <img
-              className={styles.image_preview}
-              src={washImages[title]}
-              alt={title}
-            />
-
-            <label>
-              <span>Conteúdo do Post:</span>
-              <textarea
-                name="body"
-                required
-                placeholder="Insira o conteúdo do post"
-                onChange={(e) => setBody(e.target.value)}
-                value={body}
-              ></textarea>
             </label>
 
             <label>
@@ -190,6 +179,17 @@ const EditPost = () => {
                 onChange={(e) => setDate(e.target.value)}
                 value={date}
               />
+            </label>
+
+            <label>
+              <span>Observação:</span>
+              <textarea
+                name="body"
+                required
+                placeholder="Insira uma observação"
+                onChange={(e) => setBody(e.target.value)}
+                value={body}
+              ></textarea>
             </label>
 
             <label>
