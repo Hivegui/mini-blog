@@ -5,7 +5,7 @@ import { useAuthValue } from "../../contexts/AuthContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import styles from "./CreatePost.module.css";
 
-// Importar imagens
+// Importação das imagens
 import Completa from "../../images/img-completa.jpg";
 import Interna from "../../images/img-interna.jpg";
 import Seco from "../../images/img-seco.jpg";
@@ -13,17 +13,17 @@ import Polimento from "../../images/img-polimento.jpg";
 
 // Mapeamento de tipos de lavagem para as imagens importadas
 const washImages = {
-  Completa: Completa,
+  "Completa": Completa,
   "Limpeza Interna": Interna,
   "Lavagem a Seco": Seco,
-  Polimento: Polimento,
+  "Polimento": Polimento,
 };
 
 const washPrices = {
-  Completa: "R$250,00",
+  "Completa": "R$250,00",
   "Limpeza Interna": "R$130,00",
   "Lavagem a Seco": "R$200,00",
-  Polimento: "R$190,00",
+  "Polimento": "R$190,00",
 };
 
 const formatDateBR = (date) => {
@@ -98,7 +98,7 @@ const CreatePost = () => {
       uid: user.uid,
       createdBy: user.displayName,
       selectedEmployee,
-      washPrice, // Certifique-se de que o preço está sendo salvo com o nome correto
+      washPrice,
     });
 
     // Navegar para a página inicial após o agendamento
