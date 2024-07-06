@@ -26,21 +26,27 @@ const Home = () => {
     }
   };
 
-  console.log(loading);
 
   return (
     <div className={styles.home}>
       <h1>Veja as nossas lavagens mais recentes</h1>
+
+      {/* Formulário de pesquisa de posts */}
       <form className={styles.search_form} onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Busque pela TAG #..."
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)} // Atualização do estado do termo de busca
         />
         <button className="btn btn-dark">Pesquisar</button>
       </form>
+
+      {/* Lista de posts */}
       <div className="post-list">
+        {/* Exibição de mensagem de carregamento enquanto os posts são carregados */}
         {loading && <p>Carregando...</p>}
+
+        {/* Exibição de mensagem caso não haja posts */}
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
             <p>Não foram encontradas nenhuma lavagem.</p>
@@ -49,6 +55,8 @@ const Home = () => {
             </Link>
           </div>
         )}
+
+        {/* Mapeamento dos posts e exibição de cada detalhe do post usando o componente PostDetail */}
         {posts && posts.map((post) => <PostDetail key={post.id} post={post} />)}
       </div>
     </div>

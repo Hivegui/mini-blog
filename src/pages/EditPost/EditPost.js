@@ -117,6 +117,7 @@ const EditPost = () => {
               alt={title}
             />
 
+            {/* Seleção do Funcionário */}
             <label>
               <span>Selecione um Funcionário:</span>
               <select
@@ -139,7 +140,8 @@ const EditPost = () => {
                 ))}
               </select>
             </label>
-
+            
+            {/* Seleção do horário */}
             <label>
               <span>Horário da Lavagem:</span>
               <input
@@ -170,7 +172,9 @@ const EditPost = () => {
                 ))}
               </datalist>
             </label>
+            
 
+            {/* Input Data da Lavagem */}
             <label>
               <span>Data da Lavagem:</span>
               <input
@@ -180,7 +184,8 @@ const EditPost = () => {
                 value={date}
               />
             </label>
-
+            
+            {/* Observação da lavagem */}
             <label>
               <span>Observação:</span>
               <textarea
@@ -191,7 +196,8 @@ const EditPost = () => {
                 value={body}
               ></textarea>
             </label>
-
+            
+            {/* Input Tags para o Search */}
             <label>
               <span>Tags:</span>
               <input
