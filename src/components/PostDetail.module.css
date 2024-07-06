@@ -1,11 +1,18 @@
 /* Estilização do Detalhes do Agendamento */
 
 .post_detail {
+  text-align: center;
   margin-bottom: 2em;
+  padding: 1em;
+  border-radius: 8px;
 }
 
 .post_detail img {
-  max-width: 600px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.8em;
+  position: relative;
+  object-fit:scale-down;
 }
 
 .post_detail h2 {
@@ -15,10 +22,13 @@
 .post_detail .tags {
   margin-bottom: 1.2em;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tags p {
   margin-right: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .tags span {
