@@ -1,6 +1,9 @@
+// Configuração e inicialização do Firebase
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+// Configuração do Firebase com as credenciais do projeto
 const firebaseConfig = {
   apiKey: "AIzaSyDKuwYq6ny9dvwFP3ako_C4ovQbqKlGl0w",
   authDomain: "car-washed.firebaseapp.com",
@@ -11,9 +14,11 @@ const firebaseConfig = {
   measurementId: "G-5NB4TMTPGE"
 };
 
-// Initialize Firebase
+// Inicializa o Firebase com a configuração passada
 const app = initializeApp(firebaseConfig);
 
+// Obtém uma instância do Firestore usando o aplicativo Firebase
 const db = getFirestore(app);
 
+// Exporta a instância do Firestore para ser utilizada em outras partes da aplicação
 export { db };
