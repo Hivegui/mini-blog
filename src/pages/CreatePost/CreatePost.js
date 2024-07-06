@@ -13,10 +13,22 @@ import Polimento from "../../images/img-polimento.jpg";
 
 // Mapeamento de tipos de lavagem para as imagens importadas
 const washImages = {
-  "Completa": Completa,
+  Completa: Completa,
   "Limpeza Interna": Interna,
   "Lavagem a Seco": Seco,
-  "Polimento": Polimento,
+  Polimento: Polimento,
+};
+
+const washPrices = {
+  Completa: "R$250,00",
+  "Limpeza Interna": "R$130,00",
+  "Lavagem a Seco": "R$200,00",
+  Polimento: "R$190,00",
+};
+
+const formatDateBR = (date) => {
+  const [year, month, day] = date.split("-");
+  return `${day}/${month}/${year}`;
 };
 
 const CreatePost = () => {
@@ -28,6 +40,7 @@ const CreatePost = () => {
   const [tags, setTags] = useState("");
   const [formError, setFormError] = useState("");
   const [reservedTimes, setReservedTimes] = useState([]);
+  const [washPrice, setWashPrice] = useState("");
 
   const { user } = useAuthValue();
   const navigate = useNavigate();
@@ -68,32 +81,43 @@ const CreatePost = () => {
     );
 
     if (isTimeReserved) {
-      setFormError("Este horário já está reservado. Por favor, escolha outro horário.");
+      setFormError(
+        "Este horário já está reservado. Por favor, escolha outro horário."
+      );
       return;
     }
 
     // Inserir o documento no banco de dados
     insertDocument({
       title,
-      image: washImages[title], // Obter a imagem conforme o tipo de lavagem selecionado
-      date,
+      image: washImages[title],
+      date: formatDateBR(date),
       time,
       body,
-      tags: tags.split(",").map(tag => tag.trim().toLowerCase()),
+      tags: tags.split(",").map((tag) => tag.trim().toLowerCase()),
       uid: user.uid,
       createdBy: user.displayName,
-      selectedEmployee, // Adicionar o funcionário selecionado ao documento
+      selectedEmployee,
+      washPrice, // Certifique-se de que o preço está sendo salvo com o nome correto
     });
 
     // Navegar para a página inicial após o agendamento
     navigate("/");
   };
 
+  const handleWashTypeChange = (e) => {
+    const selectedWashType = e.target.value;
+    setTitle(selectedWashType);
+    setWashPrice(washPrices[selectedWashType] || "");
+  };
+
   const getAvailableTimes = (selectedDate) => {
     const times = Array.from({ length: 12 }, (_, i) => i + 8);
     return times.filter((hour) => {
       const formattedTime = `${hour}:00`;
-      return !reservedTimes.some((rt) => rt.date === selectedDate && rt.time === formattedTime);
+      return !reservedTimes.some(
+        (rt) => rt.date === selectedDate && rt.time === formattedTime
+      );
     });
   };
 
@@ -102,22 +126,9 @@ const CreatePost = () => {
       <h2>Washed Car</h2>
       <p>Detalhe como você deseja a limpeza do seu carro!</p>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="custom-select-container">
           <span>Tipo de Lavagem:</span>
-          <select
-            style={{
-              width: "100%",
-              height: "30px",
-              padding: "4px",
-              fontSize: "15px",
-              borderRadius: "4px",
-              border: "1px solid #ccc",
-            }}
-            id="washeType"
-            className={styles.select}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          >
+          <select id="washType" value={title} onChange={handleWashTypeChange}>
             <option value="">Selecione o tipo de lavagem</option>
             <option value="Completa">Completa</option>
             <option value="Limpeza Interna">Limpeza Interna</option>
@@ -128,21 +139,23 @@ const CreatePost = () => {
 
         {title && (
           <div>
-            <img src={washImages[title]} alt={title} style={{ width: "100%", height: "auto" }} />
+            <img
+              src={washImages[title]}
+              alt={title}
+              style={{ width: "100%", height: "auto" }}
+            />
+            <p>
+              Preço: <strong>{washPrices[title]}</strong>
+            </p>
           </div>
         )}
 
-        <label>
+        <hr />
+
+        {/* Input Selecione um Funcionário */}
+        <label className="custom-employee">
           <span>Selecione um Funcionário</span>
           <select
-            style={{
-              width: "100%",
-              height: "30px",
-              padding: "4px",
-              fontSize: "15px",
-              borderRadius: "4px",
-              border: "1px solid #ccc",
-            }}
             value={selectedEmployee}
             onChange={(e) => setSelectedEmployee(e.target.value)}
           >
@@ -155,6 +168,8 @@ const CreatePost = () => {
           </select>
         </label>
 
+        <hr />
+
         {/* Input Data da Lavagem */}
         <label>
           <span>Data da Lavagem</span>
@@ -166,6 +181,8 @@ const CreatePost = () => {
             min={new Date().toISOString().split("T")[0]}
           />
         </label>
+
+        <hr />
 
         {/* Input Horário da Lavagem e disponibilidade */}
         <label>
@@ -183,12 +200,16 @@ const CreatePost = () => {
             onChange={(e) => setTime(e.target.value)}
           >
             <option value="">Selecione um horário</option>
-            {date && getAvailableTimes(date).map((hour) => (
-              <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>
-            ))}
+            {date &&
+              getAvailableTimes(date).map((hour) => (
+                <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>
+              ))}
           </select>
         </label>
 
+        <hr />
+
+        {/* Input Observação */}
         <label>
           <span>Alguma Observação?</span>
           <textarea
@@ -200,6 +221,7 @@ const CreatePost = () => {
           ></textarea>
         </label>
 
+        {/* Input Tags */}
         <label>
           <span>Tags:</span>
           <input
