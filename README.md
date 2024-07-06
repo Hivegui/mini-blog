@@ -9,4 +9,4 @@ Projeto consiste numa webpage onde o usuário consegue realizar o agendamento de
 - npm install
 - npm start
 
-# Desenvolvido como estudo e pretendo aprimorar tendo um User Admin para visualizar todos os agendamentos do sistema, receber os pagamentos, etc.
+**Desenvolvido como estudo e pretendo aprimorar tendo um User Admin para visualizar todos os agendamentos do sistema, receber os pagamentos, etc.
