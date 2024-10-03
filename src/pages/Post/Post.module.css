@@ -18,3 +18,11 @@
 .tags span {
   font-weight: bold;
 }
+
+/* Estilo específico para o corpo do post */
+.post_body {
+  margin: 20px auto; /* Margem superior e inferior para espaçamento */
+  padding: 0 40px; /* Padding lateral para afastar o texto */
+  text-align: justify; /* Justifica o texto */
+  max-width: 900px; /* Limita a largura para centralizar o texto */
+}

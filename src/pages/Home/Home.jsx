@@ -29,7 +29,7 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <h1>Veja as nossas lavagens mais recentes</h1>
+      <h1>Veja nosso post mais recente</h1>
 
       {/* Formulário de pesquisa de posts */}
       <form className={styles.search_form} onSubmit={handleSubmit}>
@@ -49,9 +49,9 @@ const Home = () => {
         {/* Exibição de mensagem caso não haja posts */}
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
-            <p>Não foram encontradas nenhuma lavagem.</p>
+            <p>Não foi encontrado nenhum Post.</p>
             <Link to="/posts/create" className="btn">
-              Criar primeiro agendamento
+              Criar primeiro Post
             </Link>
           </div>
         )}

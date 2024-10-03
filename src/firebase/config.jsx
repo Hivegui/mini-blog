@@ -5,13 +5,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Configuração do Firebase com as credenciais do projeto
 const firebaseConfig = {
-  apiKey: "AIzaSyDKuwYq6ny9dvwFP3ako_C4ovQbqKlGl0w",
-  authDomain: "car-washed.firebaseapp.com",
-  projectId: "car-washed",
-  storageBucket: "car-washed.appspot.com",
-  messagingSenderId: "1023167612468",
-  appId: "1:1023167612468:web:065af98085b3441ac22c61",
-  measurementId: "G-5NB4TMTPGE"
+  apiKey: "AIzaSyCeEaByonjw2qX5BNevJ95XICeyn76ttws",
+  authDomain: "mini-blog-a8eda.firebaseapp.com",
+  projectId: "mini-blog-a8eda",
+  storageBucket: "mini-blog-a8eda.appspot.com",
+  messagingSenderId: "515664851875",
+  appId: "1:515664851875:web:988b70274117c139732016"
 };
 
 // Inicializa o Firebase com a configuração passada

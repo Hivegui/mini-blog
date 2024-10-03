@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <p>
-        Car Washed &copy;{" "}
+        TheHive BLOG &copy;{" "}
         <a
           href="https://www.linkedin.com/in/guilhermefariasgomes/"
           target="_blank"
