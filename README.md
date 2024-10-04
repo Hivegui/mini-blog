@@ -7,6 +7,6 @@ Projeto consiste numa webpage onde o usuário consegue realizar o post num blog,
 
 # Para rodar o projeto
 - npm install
-- npm start
+- npm start ou yarn start
 
 **Desenvolvido como estudo e pretendo aprimorar tendo um User Admin para visualizar todos os posts do blog como um administrador, para que possa organizar, passar todos os posts por uma aprovação dos ADM.
